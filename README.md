@@ -1,3 +1,18 @@
+IF YOUR MIGRATIONS AND UPGRADE ARE NOT WORKING, PASTE THIS IN YOUR "env" file:
+DATABASE_URL=postgres://gitpod@localhost:5432/example
+FLASK_APP_KEY="any key works"
+FLASK_APP=src/app.py
+FLASK_ENV=development
+
+RUN THESE COMMANDS TO START BACKEND:
+- pipenv shell
+- pipenv install
+- pipenv run migrate
+- pipenv run upgrade
+- pipenv run start
+
+
+
 # WebApp boilerplate with React JS and Flask API
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
