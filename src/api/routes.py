@@ -17,12 +17,11 @@ def handle_hello():
 @api.route("/signup", methods=["POST"])
 @cross_origin()
 def signup():
-    if request.method == 'POST':
-        email = request.json.get('email', None)
-        password = request.json.get('password', None)
+    if request.method == 'POST':   
         firstname = request.json.get('firstname', None)
         lastname = request.json.get('lastname', None)
         username = request.json.get('username', None)
+        password = request.json.get('password', None)
         validationcode = request.json.get('validationcode', None)
         email = request.json.get('email', None)
         comments = request.json.get('comments', None)
