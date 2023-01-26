@@ -22,33 +22,38 @@ def signup():
         lastname = request.json.get('lastname', None)
         username = request.json.get('username', None)
         password = request.json.get('password', None)
-        validationcode = request.json.get('validationcode', None)
         email = request.json.get('email', None)
         comments = request.json.get('comments', None)
-        datejoined = request.json.get('datejoined', None)
-        lastlogin = request.json.get('lastlogin', None)
-        active = request.json.get('active', None)
        
-
-        if not email:
-            return 'Email is required', 401
+        if not firstname:
+            return 'First name is required', 401
+        if not lastname:
+            return 'Last name is required', 401
+        if not username:
+            return 'User name is required', 401
         if not password:
             return 'Password is required', 401
-        
+        if not email:
+            return 'Email is required', 401
+
         email_query = User.query.filter_by(email=email).first()
         if email_query:
             return 'This email already exists' , 402
+
+        username_query = User.query.filter_by(username=username).first()
+        if username_query:
+            return 'This Username already exists' , 402
 
         user = User()
         user.firstname = firstname 
         user.lastname = lastname 
         user.username = username 
         user.password = password
-        user.validationcode = validationcode 
+        user.validationcode = generate_token()
         user.email = email 
         user.comments = comments 
-        user.datejoined = datejoined 
-        user.lastlogin = lastlogin 
+        user.datejoined = date.today()
+        user.lastlogin = date.today()
         user.active = active 
 
 
